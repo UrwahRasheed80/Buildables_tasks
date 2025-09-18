@@ -1,160 +1,120 @@
-Banknote Authentication System
-Project Overview
-This project implements a machine learning system that can authenticate banknotes as real or fake based on image analysis. The system automatically extracts statistical features from uploaded banknote images and uses a trained machine learning model to make predictions with high accuracy.
+# Wine Classification with Machine Learning
+## Project Overview
+This project implements and compares three different machine learning algorithms to classify wine types based on their physicochemical properties. Using the classic Wine dataset from scikit-learn, we demonstrate how Decision Trees, Random Forests, and Support Vector Machines can be applied to a multiclass classification problem.
 
-Features
-Image-based Authentication: Upload banknote images for instant analysis
+## Dataset
+The Wine dataset contains 178 samples with 13 different chemical measurements for each wine:
 
-Feature Extraction: Automatically calculates variance, skewness, kurtosis, and entropy from images
+Alcohol
 
-Multiple ML Algorithms: Implements Decision Tree, Random Forest, and SVM classifiers
+Malic acid
 
-Web Interface: User-friendly Gradio interface for easy interaction
+Ash
 
-Detailed Reports: Provides feature analysis and confidence scores
+Alcalinity of ash
 
-Dataset
-The system was trained on the Banknote Authentication Dataset from the UCI Machine Learning Repository. The dataset contains 1,372 samples with four features extracted from banknote images:
+Magnesium
 
-Variance: Measures the spread of pixel values in the image
+Total phenols
 
-Skewness: Measures the asymmetry of the pixel distribution
+Flavanoids
 
-Kurtosis: Measures the peakedness of the pixel distribution
+Nonflavanoid phenols
 
-Entropy: Measures the randomness or disorder in the image
+Proanthocyanins
 
-The target variable indicates whether the banknote is authentic (0) or counterfeit (1).
+Color intensity
 
-Model Performance
-Three machine learning algorithms were implemented and evaluated:
+Hue
 
-Decision Tree Classifier: 98.55% accuracy
+OD280/OD315 of diluted wines
 
-Random Forest Classifier: 100% accuracy
+Proline
+
+### These measurements are used to classify wines into three different categories (class_0, class_1, class_2).
+
+## Algorithms Implemented
+### 1. Decision Tree Classifier
+A simple tree-based model that makes classification decisions by creating a series of if-then rules based on feature thresholds.
+
+### 2. Random Forest Classifier
+An ensemble method that combines multiple decision trees to improve predictive accuracy and control overfitting.
+
+### 3. Support Vector Machine (SVM)
+A powerful classifier that finds the optimal hyperplane to separate different classes in high-dimensional space.
+
+## Project Structure
+The implementation includes:
+
+Data loading and exploratory analysis
+
+Feature scaling (for SVM)
+
+Model training and evaluation
+
+Cross-validation for performance assessment
+
+Hyperparameter tuning using GridSearchCV
+
+Feature importance analysis
+
+Comprehensive model comparison
+
+## Key Results
+After thorough evaluation, the models performed as follows:
+
+Decision Tree: 89% accuracy
+
+Random Forest: 97% accuracy
 
 Support Vector Machine: 100% accuracy
 
-The best performing model (Random Forest or SVM) was selected for deployment.
+### The SVM model achieved perfect classification on the test set, demonstrating the effectiveness of appropriate feature scaling for this algorithm.
 
-Installation
-To run this project locally, install the required dependencies:
+## Technical Features
+Data Preprocessing: Standard scaling applied for SVM
 
-bash
-pip install scikit-learn pandas numpy matplotlib seaborn opencv-python pillow gradio
-Usage
-Run the main script to launch the web interface
+Model Evaluation: Accuracy, precision, recall, and F1-score metrics
 
-Upload a banknote image through the interface
+Cross-Validation: 5-fold cross-validation to ensure robust performance estimates
 
-Click "Analyze Banknote" to get results
+Hyperparameter Tuning: Grid search optimization for Random Forest parameters
 
-Review the authentication report with feature analysis
+Feature Importance: Analysis of which chemical properties most influence classification
 
-How It Works
-1. Image Processing
-Converts uploaded images to grayscale
+Visualization: Correlation matrices, feature importance plots, and confusion matrices
 
-Resizes images to standard dimensions (200x100 pixels)
+## How to Run
+Open the Google Colab notebook
 
-Flattens image pixels for statistical analysis
+Run all cells sequentially
 
-2. Feature Extraction
-The system extracts four statistical features from each image:
+The code will automatically:
 
-Variance: Measures how spread out the pixel values are
+Load and analyze the dataset
 
-Skewness: Measures the asymmetry of the pixel distribution
+Train and evaluate all three models
 
-Kurtosis: Measures how peaked or flat the distribution is
+Perform cross-validation
 
-Entropy: Calculates the randomness or information content
+Tune hyperparameters
 
-3. Machine Learning
-Features are scaled using StandardScaler
+Generate all visualizations
 
-Pre-trained Random Forest model makes predictions
+## Requirements
+Python 3.x
 
-Confidence scores are calculated from probability estimates
+scikit-learn
 
-4. Results Display
-Prediction (Real/Fake) with confidence percentage
+pandas
 
-Extracted feature values for transparency
+numpy
 
-Error handling for invalid images
+matplotlib
 
-File Structure
-text
-banknote-authentication/
-├── main.ipynb              # Main implementation notebook
-├── banknote_model.pkl      # Trained machine learning model
-├── scaler.pkl              # Feature scaling parameters
-└── README.md               # Project documentation
-Technical Details
-Programming Language: Python 3
+seaborn
 
-ML Framework: Scikit-learn
+## Conclusion
+This project demonstrates that all three algorithms can effectively classify wine types based on chemical properties, with Support Vector Machines achieving perfect performance when properly configured. The analysis also reveals that proline content, flavanoids, and color intensity are the most important features for distinguishing between wine types.
 
-Image Processing: OpenCV, PIL
-
-Web Interface: Gradio
-
-Data Persistence: Joblib for model serialization
-
-Model Training
-The training process includes:
-
-Data loading from UCI Machine Learning Repository
-
-Train-test split (80-20) with stratified sampling
-
-Feature scaling using StandardScaler
-
-Cross-validation for model evaluation
-
-Model selection based on test accuracy
-
-Web Interface
-The Gradio web interface provides:
-
-Image upload functionality (file upload or webcam)
-
-Real-time processing and prediction
-
-Detailed results display
-
-User-friendly design
-
-Limitations
-This is a demonstration system for educational purposes
-
-Performance depends on image quality and lighting conditions
-
-Feature extraction may not match the original wavelet-based features exactly
-
-Always verify important transactions with official methods
-
-Contributing
-This project is open for educational purposes. To contribute:
-
-Fork the repository
-
-Create a feature branch
-
-Make your changes
-
-Submit a pull request
-
-License
-This project is intended for educational use only. Please comply with all applicable laws and regulations regarding currency verification.
-
-Acknowledgments
-UCI Machine Learning Repository for the Banknote Authentication Dataset
-
-Scikit-learn team for machine learning tools
-
-Gradio team for the web interface framework
-
-Support
-For questions or issues with this project, please check the documentation above or create an issue in the GitHub repository.
+The implementation follows machine learning best practices including proper train-test splitting, feature scaling, cross-validation, and comprehensive model evaluation.
